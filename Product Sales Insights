@@ -1,3 +1,5 @@
+-- I'm using MySQL for this sample project.
+
 -- Show transactions that only done in Chennai and how many transactions happens in total?
 	-- Join tables that related, in this case 'transactions' will JOIN with 'markets' using the same value of 'markets_code'. Then use WHERE clause to filter only 'markets_name' in Chennai.
 SELECT *
