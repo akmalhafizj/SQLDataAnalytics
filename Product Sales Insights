@@ -1,0 +1,35 @@
+-- Show transactions that only done in Chennai and how many transactions happens in total?
+	-- Join tables that related, in this case 'transactions' will JOIN with 'markets' using the same value of 'markets_code'. Then use WHERE clause to filter only 'markets_name' in Chennai.
+SELECT *
+FROM sales.transactions t
+INNER JOIN sales.markets m
+ON t.market_code = m.markets_code
+WHERE markets_name = 'Chennai'
+
+	-- Use COUNT agregrate function to count how many transaction recorded.
+SELECT COUNT(t.product_code)
+FROM sales.transactions t
+INNER JOIN sales.markets m
+ON t.market_code = m.markets_code
+WHERE markets_name = 'Chennai'
+
+	-- How many transaction accepted in USD currency?
+SELECT *
+FROM sales.transactions t
+INNER JOIN sales.markets m
+ON t.market_code = m.markets_code
+WHERE currency = 'USD'
+
+	-- Show only transaction happened in 2018.
+SELECT *
+FROM sales.transactions t
+JOIN sales.date d
+ON t.order_date = d.date
+WHERE year = 2018
+
+	-- How many total sales amount in each year?
+SELECT SUM(t.sales_amount) AS total_sales, year
+FROM sales.transactions t
+JOIN sales.date d
+ON t.order_date = d.date
+GROUP BY year
